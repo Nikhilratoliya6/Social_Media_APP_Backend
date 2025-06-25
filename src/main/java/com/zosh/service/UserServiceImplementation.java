@@ -44,7 +44,8 @@ public class UserServiceImplementation implements UserService {
 		this.javaMailSender = javaMailSender;
 		
 	}
-	
+
+
 	@Override
 	public User registerUser(User user) throws UserException {
 		
@@ -241,7 +242,9 @@ public class UserServiceImplementation implements UserService {
         passwordResetTokenRepository.save(passwordResetToken);
 
         // Send an email containing the reset link
-        sendEmail(user.getEmail(), "Password Reset", "Click the following link to reset your password: http://localhost:3000/reset-password?token=" + resetToken);
+//        sendEmail(user.getEmail(), "Password Reset", "Click the following link to reset your password: http://localhost:3000/reset-password?token=" + resetToken);
+		sendEmail(user.getEmail(), "Password Reset", "Click the following link to reset your password: https://socialmediaappbackend-production-8a21.up.railway.app/" + resetToken);
+
 	}
 	private void sendEmail(String to, String subject, String message) {
 	    SimpleMailMessage mailMessage = new SimpleMailMessage();
