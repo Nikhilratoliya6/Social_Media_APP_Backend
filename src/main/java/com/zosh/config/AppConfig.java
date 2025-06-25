@@ -52,7 +52,7 @@ public class AppConfig {
 						"http://localhost:4000",
 						"http://localhost:4200",
 						"https://zosh-social.vercel.app",
-						"https://socialmediaapp-nikhil.netlify.app/"
+						"https://socialmediaapp-nikhil.netlify.app"
 
 						
 						));
