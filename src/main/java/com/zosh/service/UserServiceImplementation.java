@@ -243,7 +243,7 @@ public class UserServiceImplementation implements UserService {
 
         // Send an email containing the reset link
 //        sendEmail(user.getEmail(), "Password Reset", "Click the following link to reset your password: http://localhost:3000/reset-password?token=" + resetToken);
-		sendEmail(user.getEmail(), "Password Reset", "Click the following link to reset your password: https://socialmediaappbackend-production-8a21.up.railway.app/" + resetToken);
+		sendEmail(user.getEmail(), "Password Reset", "Click the following link to reset your password:https://socialmediaapp-nikhil.netlify.app/reset-password?token=" + resetToken);
 
 	}
 	private void sendEmail(String to, String subject, String message) {
