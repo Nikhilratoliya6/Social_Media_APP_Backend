@@ -84,27 +84,21 @@ public class AuthController {
 		return new ResponseEntity<AuthResponse>(authResponse, HttpStatus.OK);
 
 	}
-
 	@PostMapping("/signin")
 	public ResponseEntity<AuthResponse> signin(@RequestBody LoginRequest loginRequest) throws UserException {
-
 		String username = loginRequest.getEmail();
 		String password = loginRequest.getPassword();
 		
-//		Optional<User> user = userRepository.findByEmail(username);
-		User user=new User();
-//		if(user.isEmpty()) {
-//			throw new UserException("user not found with username  "+ username);
-//		}
-
-		System.out.println(username + " ----- " + password);
+		Optional<User> userOpt = userRepository.findByEmail(username);
+		if(userOpt.isEmpty()) {
+			throw new UserException("User not found with email: " + username);
+		}
 
 		Authentication authentication = authenticate(username, password);
 		SecurityContextHolder.getContext().setAuthentication(authentication);
-//
+
 		String token = jwtProvider.generateToken(authentication);
 		AuthResponse authResponse = new AuthResponse();
-
 		authResponse.setMessage("Login Success");
 		authResponse.setJwt(token);
 
